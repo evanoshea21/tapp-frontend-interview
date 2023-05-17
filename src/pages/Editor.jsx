@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { theme } from "../styles/theme";
 import Sidebar from "../components/editor/Sidebar";
 import Site from "../components/editor/Site";
+import React from 'react';
 
 // Component Styles
 
@@ -15,6 +16,7 @@ const Root = styled.div`
   padding: 0;
   overflow-x: hidden;
   overflow-y: hidden;
+  // border: 10px solid red;
 `;
 
 const RootContent = styled.div`
@@ -45,14 +47,25 @@ const SideBarWrapper = styled(motion.div)`
 
 /** Root Editor View */
 function Editor() {
+
+  const [themeStyle, setThemeStyle] = React.useState('natural');
+
+  React.useEffect(() => {
+    console.log(themeStyle);
+    //set local storage to user's preferences
+
+  }, [themeStyle]);
+
+
   return (
     <Root>
       <RootContent>
         <SiteWrapper layout>
           <Site />
+          {/* <Site themeStyle={themeStyle}/> */}
         </SiteWrapper>
         <SideBarWrapper layout>
-          <Sidebar />
+          <Sidebar themeStyle={themeStyle} setThemeStyle={setThemeStyle}/>
         </SideBarWrapper>
       </RootContent>
     </Root>
