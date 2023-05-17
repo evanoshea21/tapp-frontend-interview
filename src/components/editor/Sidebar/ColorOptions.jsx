@@ -17,12 +17,12 @@ const CircleColor = styled.div`
 
 /** Sidebar view of the Editor page */
 function ColorOptions({themeName, diameter}) {
+  //diameter different for dropdown and sidebar popup menu
 
   return (
     <div style={{
       display: 'flex',
       gap: '6px'
-      // justifyContent: 'space-around',
     }}
     >
 

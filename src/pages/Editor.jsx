@@ -4,6 +4,7 @@ import { theme } from "../styles/theme";
 import Sidebar from "../components/editor/Sidebar";
 import Site from "../components/editor/Site";
 import React from 'react';
+import { siteThemes } from '../constants/siteThemes.js'
 
 // Component Styles
 
@@ -34,7 +35,7 @@ const SiteWrapper = styled(motion.div)`
   overflow: hidden;
   border: 1px solid ${theme.colors.black[40]};
   border-radius: 8px;
-  background-color: ${theme.colors.black[10]}; // Change to Primary color
+  background-color: ${props => props.$color || 'black'}; // Change to Primary color
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,21 +49,22 @@ const SideBarWrapper = styled(motion.div)`
 /** Root Editor View */
 function Editor() {
 
-  const [themeStyle, setThemeStyle] = React.useState('natural');
+  const [themeStyle, setThemeStyle] = React.useState(
+    localStorage.getItem('theme') || 'default'
+  );
 
   React.useEffect(() => {
     console.log(themeStyle);
-    //set local storage to user's preferences
 
+    localStorage.setItem('theme', themeStyle);
   }, [themeStyle]);
 
 
   return (
-    <Root>
+    <Root >
       <RootContent>
-        <SiteWrapper layout>
-          <Site />
-          {/* <Site themeStyle={themeStyle}/> */}
+        <SiteWrapper $color={siteThemes[themeStyle].primary} layout>
+          <Site themeStyle={themeStyle}/>
         </SiteWrapper>
         <SideBarWrapper layout>
           <Sidebar themeStyle={themeStyle} setThemeStyle={setThemeStyle}/>
