@@ -9,10 +9,7 @@ const CircleColor = styled.div`
   height: ${props => props.$diameter}px;
   border-radius: 50%;
 
-  background-color: ${props => {
-    if(props.$color) return props.$color
-    return 'grey'
-  }};
+  background-color: ${props => props.$color || 'grey'};
 `;
 
 /** Sidebar view of the Editor page */

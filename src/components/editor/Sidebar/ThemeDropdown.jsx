@@ -14,7 +14,6 @@ const Select = styled.div`
   background-color: white;
   border-radius: 4px;
   border: 1px solid lightgrey;
-  padding: 0 10px;
   max-height: 90px;
   overflow-y: auto;
 `;
@@ -23,7 +22,9 @@ const Option = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 2px;
+  border-radius: 4px;
+  margin: 3px auto;
+  padding: 10px;
   user-select: none;
   &:hover {
     background-color: ${props => props.$color || 'lightgrey'};
@@ -35,9 +36,9 @@ const Option = styled.div`
 function ThemeDropdown({showSelect, setShowSelect, themeStyle, setThemeStyle}) {
 
   return (
-    <div style={{
-      position: 'relative'
-    }}>
+  <div style={{
+    position: 'relative'
+  }}>
 
     <div
     onClick={() => {
@@ -45,8 +46,8 @@ function ThemeDropdown({showSelect, setShowSelect, themeStyle, setThemeStyle}) {
       console.log('hey')
     }}
     style={{
-      color: siteThemes[themeStyle].secondary,
-      backgroundColor: siteThemes[themeStyle].primary,
+      color: siteThemes[themeStyle]?.secondary,
+      backgroundColor: siteThemes[themeStyle]?.primary,
       borderRadius: '5px',
       padding: '10px',
       position: 'relative',
@@ -63,28 +64,25 @@ function ThemeDropdown({showSelect, setShowSelect, themeStyle, setThemeStyle}) {
           {Object.keys(siteThemes).map((themeName, index) => {
             return (
               <Option
+              $color={siteThemes[themeStyle]?.primary}
               onClick={() => {
                 if(showSelect) {
                   setThemeStyle(themeName)
                 }
               }}
+              //i recognize index for key is not ideal
               key={index}
               >
-
                 <span>{capatalizeString(themeName)}</span>
                 <ColorOptions themeName={themeName}
                 diameter='20'/>
-
                 </ Option>
-
             )
           })}
 
-        {/* </div> */}
         </Select>
       )}
-    {/* end of select */}
-    </div>
+  </div>
   );
 }
 

@@ -53,6 +53,8 @@ function Editor() {
     localStorage.getItem('theme') || 'default'
   );
 
+
+  //saved theme in local storage for persistance
   React.useEffect(() => {
     console.log(themeStyle);
 
