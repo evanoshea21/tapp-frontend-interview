@@ -43,7 +43,6 @@ function ThemeDropdown({showSelect, setShowSelect, themeStyle, setThemeStyle}) {
     <div
     onClick={() => {
       setShowSelect(prev => !prev);
-      console.log('hey')
     }}
     style={{
       color: siteThemes[themeStyle]?.secondary,
