@@ -29,7 +29,6 @@ const Option = styled.div`
   &:hover {
     background-color: ${props => props.$color || 'lightgrey'};
   }
-  // '&:hover': {backgroundColor: siteThemes[themeName].primary}
 `;
 
 /** Sidebar view of the Editor page */
@@ -72,7 +71,7 @@ function ThemeDropdown({showSelect, setShowSelect, themeStyle, setThemeStyle}) {
               //i recognize index for key is not ideal
               key={index}
               >
-                <span>{capatalizeString(themeName)}</span>
+                <span style={{fontSize: '.9em', color: 'rgb(104, 104, 104)'}}>{capatalizeString(themeName)}</span>
                 <ColorOptions themeName={themeName}
                 diameter='20'/>
                 </ Option>

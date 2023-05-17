@@ -32,7 +32,6 @@ const DocLink = styled.a`
 /** Site preview for the Editor page */
 function Site({themeStyle}) {
 
-  console.log('theme style: ', themeStyle);
 
   return (
     <Root>

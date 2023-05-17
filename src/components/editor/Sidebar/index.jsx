@@ -15,6 +15,20 @@ const Root = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const ThemeModal = styled.div`
+  min-width: 230px;
+  background-color: white;
+  position: absolute;
+  right: 80px;
+  top: -80px;
+
+  border-radius: 15px;
+  border: 1px solid lightgrey;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
 
 
 /** Sidebar view of the Editor page */
@@ -49,21 +63,8 @@ function Sidebar({themeStyle, setThemeStyle}) {
           {/* POPUP THEME SELECTOR */}
 
           {active && (
-            <div style={{
-              minWidth: '230px',
-              // minHeight: '300px',
-              backgroundColor: 'white',
-              position: 'absolute',
-              right: '80px',
-              top: '-80px',
+              <ThemeModal>
 
-              borderRadius: '15px',
-              border: '1px solid lightgrey',
-              padding: '25px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px'
-            }}>
               <h3>Site Styles</h3>
 
               <p>Theme</p>
@@ -77,9 +78,9 @@ function Sidebar({themeStyle, setThemeStyle}) {
 
               <p>Theme Colors</p>
 
-
              <ColorOptions themeName={themeStyle}/>
-            </div>
+
+             </ThemeModal>
           )}
       </div>
     </Root>
